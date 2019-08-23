@@ -4,13 +4,26 @@ from capitulo import Capitulo
 
 class Livro:
     def __init__(self, codigo: int, titulo: str, ano: int, editora: Editora, autor: Autor, numeroCapitulo: int, tituloCapitulo: str):
-        ...
+        self.__codigo = codigo
+        self.__titulo = titulo
+        self.__ano = ano
+        self.__editora = Editora()
+        self.__autor = Autor()
+        self.__numero_capitulo = numeroCapitulo
+        self.__titulo_capitulo = tituloCapitulo
 
     @property
     def codigo(self):
         return self.__codigo
 
-    ... Adicionar demais getters
+    @property
+    def titulo(self):
+       return self.__titulo
+    @property
+    def ano(self):
+        return self.__ano
+    
+    
 
     @codigo.setter
     def codigo(self, codigo):
