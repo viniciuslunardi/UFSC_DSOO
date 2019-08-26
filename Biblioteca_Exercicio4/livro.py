@@ -7,8 +7,8 @@ class Livro:
         self.__titulo = titulo
         self.__ano = ano
         self.__editora = editora
-        self.capitulos = []
-        self.autores = []
+        self.__capitulos = []
+        self.__autores = []
 
     @property
     def codigo(self):
