@@ -28,23 +28,17 @@ class Livro:
 
     @property
     def autor(self):
-        return self.__autor
+        for i in range(len(self.__autores)):
+            return self.__autores
 
-    @property
-    def numero_capitulo(self):
-        return self.__numero_capitulo
-
-    @property
-    def titulo_capitulo(self):
-        return self.__titulo_capitulo
-    
     @codigo.setter
     def codigo(self, codigo):
         self.__codigo = codigo
+
     @titulo.setter
     def titulo(self, titulo):
         self.__titulo = titulo
-    
+
     @ano.setter
     def ano(self, ano):
         self.__ano = ano
@@ -53,28 +47,23 @@ class Livro:
     def editora(self, cod, nome):
         self.__editora = Editora(cod, nome)
 
-    @numero_capitulo.setter
-    def numero_capitulo(self, nc):
-        self.__numero_capitulo = nc
-
-    @titulo_capitulo.setter
-    def titulo_capitulo(self, tc):
-        self.__titulo_capitulo = tc
-
     def incluirAutor(self, autor: Autor):
         #Nao esqueca de garantir que o objeto recebido pertence a classe Autor...
-        self.autores.append(autor)
+        autor_len = len(self.__autores + 1)
+        self.__autores.append(autor, autor_len)
 
     def excluirAutor(self, autor: Autor):
-        pass
+        self.__autores.remove(autor)
 
     def incluirCapitulo(self, numeroCapitulo: int, tituloCapitulo: str):
         #Nao permitir insercao de Capitulos duplicados!
-        pass
+        if self.__capitulos != numeroCapitulo:
+            pass
     
     def excluirCapitulo(self, tituloCapitulo: str):
         pass
 
     def findCapituloByTitulo(self, tituloCapitulo: str):
         pass
+
 

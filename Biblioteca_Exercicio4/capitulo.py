@@ -6,14 +6,15 @@ class Capitulo:
     @property
     def numero(self):
         return self.__numero
-    @titulo.setter
+
+    @numero.setter
     def numero(self,nmr):
         self.__numero = nmr
 
     @property
     def titulo(self):
         return self.__titulo
-    @nome.setter
+
+    @titulo.setter
     def titulo(self,titulo):
         self.__titulo = titulo
-    
