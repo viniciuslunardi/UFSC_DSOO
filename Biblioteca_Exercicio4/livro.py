@@ -6,10 +6,7 @@ class Livro:
         self.__codigo = codigo
         self.__titulo = titulo
         self.__ano = ano
-        self.__editora = Editora(codigo, nome)
-        self.__autor = Autor(codigo, nome)
-        self.__numero_capitulo = numeroCapitulo
-        self.__titulo_capitulo = tituloCapitulo
+        self.__editora = editora
         self.capitulos = []
         self.autores = []
 
