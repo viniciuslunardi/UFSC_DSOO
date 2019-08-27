@@ -48,22 +48,20 @@ class Livro:
         self.__editora = Editora(cod, nome)
 
     def incluirAutor(self, autor: Autor):
-        #Nao esqueca de garantir que o objeto recebido pertence a classe Autor...
-        autor_len = len(self.__autores + 1)
-        self.__autores.append(autor, autor_len)
+        if (autor is not None) and (isinstance(autor, Autor)):
+            if not self.__autores.count(autor):    
+                self.__autores.append(autor)
 
     def excluirAutor(self, autor: Autor):
-        self.__autores.remove(autor)
+        if (autor is not None) and (isinstance(autor, Autor)):
+            if self.__autores.count(autor):
+                self.__autores.remove(autor)
 
     def incluirCapitulo(self, numeroCapitulo: int, tituloCapitulo: str):
-        #Nao permitir insercao de Capitulos duplicados!
-        if self.__capitulos != numeroCapitulo:
-            pass
+        pass
     
     def excluirCapitulo(self, tituloCapitulo: str):
         pass
 
     def findCapituloByTitulo(self, tituloCapitulo: str):
         pass
-
-
