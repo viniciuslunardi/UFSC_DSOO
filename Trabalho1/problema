@@ -1,0 +1,12 @@
+		Problema proposto:
+	Um empresário, ao analisar as vendas de seu restaurante, não ficou satisfeito com o resultado. Pensando em aumentar os lucros, deu ouvido aos clientes, que adoram a comida caseira servida pelo seu restaurante, e começar a realizar  entrega das marmitas, visto que são gostosas e baratas. 
+Procurando atender aos clientes, o dono se deparou com uma taxa em todos os serviços  já existente para entrega de comida, a qual não valeria a pena para o cliente. Então, decidiu contatar seus amigos, desenvolvedores, para criar um sistema web de gerenciamento dos pedidos e entregas de marmitas.
+
+		Escopo do desenvolvimento: teste 1
+	O sistema terá  três ambientes, o ambiente comum (área inicial), o ambiente de login (cliente e administrador) e as áreas próprias conforme o usuario.
+A área comum será uma apresentação do restaurante, divulgando, contando a história e evolução.
+A parte do cliente cabe a seleção de comida da sua marmita, se deseja bebida e um sistema de recompensa que dá 1 marmita a casa 10 compradas.
+Já a administrativa cabe ao gerenciam/ento dos pedidos, manutenção do site e área de pagamento, criptografia e banco de dados.
+
+		Escopo do desenvolvimento: teste 2
+
