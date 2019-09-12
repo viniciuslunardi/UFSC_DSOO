@@ -1,8 +1,9 @@
 from mamifero import Mamifero
 
 class Gato(Mamifero):
-    def __init__(self, tamanho_passo: int=2, volume_som: int=2)
+    def __init__(self, tamanho_passo: int=2, volume_som: int=2):
         super().__init__(tamanho_passo, volume_som)
+        self.__volume_som = volume_som
 
     @property
     def tamanho_passo(self):
@@ -20,6 +21,12 @@ class Gato(Mamifero):
     def volume_som(self, volume: int):
         self.__volume_som = volume
     
+    def mover(self):
+        return "ANIMAL: DESLOCOU 2"
+    
+    def produzir_som(self):
+        return self.__volume_som
+    
     def miar(self):
-        return "MAMIFERO: PRODUZ SOM: "+volumeSom+ " SOM: MIAU"
+        return "MAMIFERO: PRODUZ SOM: "+ str(self.__volume_som)+ " SOM: MIAU"
     
