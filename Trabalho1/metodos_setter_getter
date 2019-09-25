@@ -1,0 +1,8 @@
+
+    @property
+    def ..(self):
+        pass
+    
+    @.setter
+    def ..(self):
+        pass
