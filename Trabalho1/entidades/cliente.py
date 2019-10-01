@@ -16,9 +16,22 @@ class Cliente(Pessoa):
     def fidelidade(self):
         return self.__fidelidade
     
+    @fidelidade.setter
+    def fidelidade(self, fidelidade):
+        self.__fidelidade = fidelidade
+    
     @endereco.setter
     def endereco(self, endereco: Endereco):
         if (endereco is not None) and (isinstance(endereco, Endereco)):
             self.__endereco = endereco
-
+    
+    @property
+    def pedidos_anteriores(self):
+        return self.__pedidos_anteriores
+    
+    @pedidos_anteriores.setter
+    def pedidos_anteriores(self, pedidos_anteriores):
+        self.__pedidos_anteriores = pedidos_anteriores
+        
+       
 
