@@ -25,13 +25,6 @@ class Cliente(Pessoa):
         if (endereco is not None) and (isinstance(endereco, Endereco)):
             self.__endereco = endereco
     
-    @property
-    def pedidos_anteriores(self):
-        return self.__pedidos_anteriores
-    
-    @pedidos_anteriores.setter
-    def pedidos_anteriores(self, pedidos_anteriores):
-        self.__pedidos_anteriores = pedidos_anteriores
-        
+          
        
 
