@@ -21,6 +21,7 @@ class TelaFuncionario:
             "\n ---------------Ola-------------------\n \n",
             "Digite 1 para ver todos os pedidos abertos\n \n"
             "Digite 0 para sair \n"
+            "Teste"
         )
         opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 0])
         if opcao == 0:
