@@ -14,29 +14,29 @@ class Pedido:
     def feijao(self, feijao: bool=True):
         self.__feijao = feijao
         self.__pedido.append(str("feijao"))
-        return print("Feijao adicionado ao pedido.")
+        return ("Feijao adicionado ao pedido.")
         
     @property
     def arroz(self, arroz: bool=True):
         self.__arroz = arroz
         self.__pedido.append(str("arroz"))
-        return print("Arroz adicionado ao pedido.")
+        return ("Arroz adicionado ao pedido.")
 
     @property
     def macarrao(self, macarrao: bool=True):
         self.__macarrao = macarrao
         self.__pedido.append(str("macarrao"))
-        return print("Macarrao adicionado ao pedido.")
+        return ("Macarrao adicionado ao pedido.")
 
     @property
     def carne(self, carne: bool=True):
         self.__carne = carne
         self.__pedido.append(str("carne"))
-        return print("Carne adicionada ao pedido.")
+        return "Carne adicionada ao pedido."
     
     @property
     def status(self):
-        return print(self.__status)
+        return self.__status
     
     @property
     def pedido(self):
@@ -53,7 +53,7 @@ class Pedido:
         self.__pedido.append(self.__status)
 
 
-    def exit(self):
+    def sair(self):
         exit(0)
 
         
