@@ -1,5 +1,5 @@
-from pessoa import Pessoa
-from endereco import Endereco
+from entidades.pessoa import Pessoa
+from entidades.endereco import Endereco
 class Cliente(Pessoa):
     def __init__(self, nome: str, cpf: str, telefone: str, endereco: Endereco, 
         pedidos_anteriores: [], fidelidade: int=0):
@@ -16,15 +16,8 @@ class Cliente(Pessoa):
     def fidelidade(self):
         return self.__fidelidade
     
-    @fidelidade.setter
-    def fidelidade(self, fidelidade):
-        self.__fidelidade = fidelidade
-    
     @endereco.setter
-    def endereco(self, endereco: Endereco):
-        if (endereco is not None) and (isinstance(endereco, Endereco)):
-            self.__endereco = endereco
-    
-          
-       
-
+    def endereco(self, cep: int, rua: str, numero: int, complemento: str):
+        endereco = Endereco(cep, rua, numero, complemento)
+        self.__endereco = endereco
+        return "Endereco adicionado com sucesso!"
