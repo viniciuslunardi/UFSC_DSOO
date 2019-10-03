@@ -40,6 +40,7 @@ class TelaPedido:
         if opcao == 0:
             self.sair()
         return opcao
-        
+
+
     def sair(self):
         exit(0)

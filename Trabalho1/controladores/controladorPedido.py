@@ -1,15 +1,22 @@
 from entidades.pedido import Pedido
 from telas.telaPedido import TelaPedido
+from telas.telaFuncionario import TelaFuncionario
 from entidades.cliente import Cliente
+import random
 class ControladorPedido:
+
     def __init__(self):
-        self.__pedidos = [{"cliente": Cliente.nome, "pedido": Pedido.pedido, "status": Pedido.status}]
-        self.__clientes = []
+        self.__pedidos = [{"cliente": Cliente.nome, "pedido": Pedido.pedido, 
+        "status": Pedido.status, "codigo": random.randrange(1,399)}]
+        self.__clientes = [{"nome": Cliente.nome, "endereco": Cliente.endereco, 
+        "telefone": Cliente.telefone}]
         self.__tela_pedido = TelaPedido(self)
+        self.__tela_funcionario = TelaFuncionario(self)
     
-    def cadastrar_cliente(self, nome, cpf, telefone, endereco, fidelidade):
-        c1 = Cliente(nome, cpf, telefone, endereco)
-        self.__clientes.append(c1)
+    def cadastrar_cliente(self, nome, cpf, telefone, ):
+        novo_end = Cliente.endereco = 'nome'
+        c1 = Cliente(nome, cpf, telefone, novo_end)
+        
         return c1
 
     def criar_pedido(self):
@@ -26,14 +33,21 @@ class ControladorPedido:
             funcao_escolhida()
         if opcao == 5:
             funcao_escolhida(pedido)
-            self.entrou()
+            self.entrou_cliente()
         else: print(funcao_escolhida)
 
-    def entrou(self):
+    def entrou_cliente(self):
         switcher = {1: self.criar_pedido, 2: self.ver_pedidos,
         0: self.sair}
         while True: 
             opcao = self.__tela_pedido.mostra_tela_cliente()
+            funcao_escolhida = switcher[opcao]
+            funcao_escolhida()
+    
+    def entrou_funcionario(self):
+        switcher = {1: self.ver_pedidos, 0: self.sair}
+        while True: 
+            opcao = self.__tela_funcionario.mostra_tela_funcionario()
             funcao_escolhida = switcher[opcao]
             funcao_escolhida()
 
@@ -43,7 +57,8 @@ class ControladorPedido:
         print("Pedido realizado.")
     
     def ver_pedidos(self):
-        return self.__pedidos
+        print(('\n oiiiiiiiiii, seu pedido eh este {}').format(self.__pedidos))
+        return False
 
     def sair(self):
         exit(0)
