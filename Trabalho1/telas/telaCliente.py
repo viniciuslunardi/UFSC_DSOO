@@ -3,7 +3,13 @@ class TelaCliente:
         self.__controlador = controlador
     
     def cadastro(self):
-        nome = str(input("Digite seu nome: "))
+        try:
+            nome = str(input("Digite seu nome: "))
+            cpf = str(input("Digite seu cpf: ")), 
+            telefone = str(input("Digite seu telefone: "))
+            rua = str(input("Digite sua rua: "))
+        except ValueError:
+            print("NAO PODE")
         return nome
 
     def le_numero_inteiro(self, msg: str="", lista_valida = []):
@@ -28,7 +34,7 @@ class TelaCliente:
             "Para cancelar o pedido digite: 9 \n \n",
             "Para sair digite: 0 \n"
         )
-        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 6, 9, 0])
+        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 9, 0])
         if opcao == 0:
             self.sair()
         return opcao
