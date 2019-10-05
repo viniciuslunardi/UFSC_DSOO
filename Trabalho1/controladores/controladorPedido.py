@@ -79,7 +79,9 @@ class ControladorPedido:
         self.__pedidos.append(self.__pedido)
     
     def ver_pedidos(self):
-        print(('\n{}').format(self.__pedidos))
+        if self.__pedidos:
+            print(('\n{}').format(self.__pedidos))
+        else: print("Nao existem pedidos.")
         return False
 
     def mostra_tela_cadastro(self):
@@ -87,7 +89,7 @@ class ControladorPedido:
         return nome
     
     def voltar_tela_inicial(self):
-        self.__tela_principal.boas_vindas()
+        self.__tela_funcionario.mostra_tela_funcionario()
             
     def sair(self):
         exit(0)

@@ -31,7 +31,7 @@ class TelaCliente:
             "Para fazer um novo pedido digite: 1 \n \n",
             "Para ver seus pedidos digite: 2 \n \n",
             "Para se cadastrar digite: 3 \n\n",
-            "Para cancelar o pedido digite: 9 \n \n",
+            "Para entrar como funcionario digite: 9 \n \n",
             "Para sair digite: 0 \n"
         )
         opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 9, 0])

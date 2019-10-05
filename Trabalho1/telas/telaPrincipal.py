@@ -21,3 +21,4 @@ class TelaPrincipal:
         print("Para entrar como cliente - Digite 2 \n")
         opcao = self.le_numero_inteiro("Escolha uma das opcoes: ", [1,2])
         return opcao
+    
