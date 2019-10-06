@@ -1,16 +1,33 @@
+from entidades.endereco import Endereco
+from entidades.cliente import Cliente
 class TelaCliente:
     def __init__(self, controlador):
         self.__controlador = controlador
-    
+   
     def cadastro(self):
+        print(
+            "Para cadastrar um cliente sera necessario de alguns dados \n"
+            "Sao eles: Nome, Cpf, Telefone, Endereco: Rua, numero, complemento e cep"
+        )
+        opcao = self.le_cadastro()
+        print()
+        print("Cliente cadastrado com sucesso.")
+        return opcao
+
+    def le_cadastro(self):
+        nome = str(input("Digite o nome do cliente: "))
+        cpf = str(input("Digite o cpf do cliente: "))
+        telefone = str(input("Digite o telefone do cliente: "))
+        rua = str(input("Digite o nome da rua do cliente: "))
         try:
-            nome = str(input("Digite seu nome: "))
-            cpf = str(input("Digite seu cpf: ")), 
-            telefone = str(input("Digite seu telefone: "))
-            rua = str(input("Digite sua rua: "))
-        except ValueError:
-            print("NAO PODE")
-        return nome
+            numero = int(input("Digite o numero do endereco do cliente: "))
+        except Exception:
+            numero = input("Voce deve inserir so e somente so numeros: ")         
+        complemento = str(input("Digite o complemento do endereco do cliente: "))
+        cep = str(input("Digite o cep do cliente: "))
+        e1 = Endereco(cep, rua, numero, complemento)
+        c1 = Cliente(nome, cpf, telefone, e1)
+        return c1
 
     def le_numero_inteiro(self, msg: str="", lista_valida = []):
         while True:
@@ -30,11 +47,10 @@ class TelaCliente:
             "\n ---------------Ola------------------- \n \n",
             "Para fazer um novo pedido digite: 1 \n \n",
             "Para ver seus pedidos digite: 2 \n \n",
-            "Para se cadastrar digite: 3 \n\n",
             "Para entrar como funcionario digite: 9 \n \n",
             "Para sair digite: 0 \n"
         )
-        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 9, 0])
+        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 9, 0])
         if opcao == 0:
             self.sair()
         return opcao

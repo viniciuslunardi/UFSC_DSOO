@@ -1,16 +1,15 @@
 from entidades.pessoa import Pessoa
 from entidades.endereco import Endereco
 class Cliente(Pessoa):
-    def __init__(self, nome: str, cpf: str, telefone: str, endereco: Endereco, 
-        pedidos_anteriores = [], fidelidade: int=0):
+    def __init__(self, nome: str, cpf: str, telefone: str, 
+        endereco: Endereco, fidelidade: int=0):
         super().__init__(nome, cpf, telefone)
         self.__endereco = endereco
-        self.__pedidos_anteriores = pedidos_anteriores
         self.__fidelidade = fidelidade
     
     @property
     def endereco(self):
-        return self.__endereco
+        return self.__endereco.rua, self.__endereco.numero, self.__endereco.complemento
     
     @property
     def fidelidade(self):

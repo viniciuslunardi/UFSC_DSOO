@@ -1,5 +1,5 @@
 class Endereco:
-    def __init__(self, cep: int, rua: str, numero: int, complemento: str):
+    def __init__(self, cep: str, rua: str, numero: int, complemento: str):
         self.__cep = cep
         self.__rua = rua
         self.__numero = numero
@@ -10,7 +10,7 @@ class Endereco:
         return self.__cep
     
     @cep.setter
-    def cep(self, cep: int):
+    def cep(self, cep: str):
         self.__cep = cep
 
     @property

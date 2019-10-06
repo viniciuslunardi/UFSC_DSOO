@@ -9,7 +9,7 @@ class ControladorRestaurante:
     
     def inicia(self):
         switcher = {2: self.abre_tela_cliente,
-        1: self.abre_tela_funcionario}
+        1: self.abre_tela_funcionario, 0: self.sair}
         while True:
             opcao = self.__tela_principal.boas_vindas()
             funcao_escolhida = switcher[opcao]
@@ -20,3 +20,6 @@ class ControladorRestaurante:
 
     def abre_tela_funcionario(self):
         self.__controlador_pedido.entrou_funcionario()
+    
+    def sair(self):
+        exit(0)

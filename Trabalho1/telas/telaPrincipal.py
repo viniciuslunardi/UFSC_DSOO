@@ -17,8 +17,9 @@ class TelaPrincipal:
 
     def boas_vindas(self):
         print("----------------BEM VINDO AO RESTAURANTE PAPATIN----------------- \n")
-        print("Para entrar como funcionario - Digite 1 \n")
-        print("Para entrar como cliente - Digite 2 \n")
-        opcao = self.le_numero_inteiro("Escolha uma das opcoes: ", [1,2])
+        print("Se voce eh um funcionario - Digite 1 \n")
+        print("Agora, se voce for um cliente - Digite 2 \n")
+        print("E se desejar sair - Digite 0 \n")
+        opcao = self.le_numero_inteiro("Escolha uma das opcoes: ", [1,2,0])
         return opcao
     
