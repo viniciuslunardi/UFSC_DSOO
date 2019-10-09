@@ -57,7 +57,8 @@ class ControladorPedido:
             funcao_escolhida()
     
     def entrou_funcionario(self):
-        switcher = {0: self.sair, 1: self.ver_pedidos, 2: self.cadastrar_cliente, 3: self.ver_clientes}
+        switcher = {0: self.sair, 1: self.ver_pedidos, 2: self.cadastrar_cliente, 
+        3: self.ver_clientes, 9: self.entrou_cliente}
         while True: 
             opcao = self.__tela_funcionario.mostra_tela_funcionario()
             funcao_escolhida = switcher[opcao]
@@ -70,7 +71,7 @@ class ControladorPedido:
         self.__pedido['status'] = "Pedido realizado"
         self.__pedido['codigo'] = random.randrange(1,900)
         self.__pedidos.append(self.__pedido)
-        print(self.__pedido.values())
+        print("Pedido realizado com sucesso.")
 
     def registra_pedido_cadastrado(self, p1: Pedido, c1):
         self.__pedido['cliente'] = c1
@@ -95,7 +96,7 @@ class ControladorPedido:
         return nome
     
     def voltar_tela_inicial(self):
-        self.__controlador_transferencia.transferir()
-            
+        self.entrou_funcionario()
+
     def sair(self):
         exit(0)

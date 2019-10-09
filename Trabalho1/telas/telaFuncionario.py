@@ -24,9 +24,10 @@ class TelaFuncionario:
             "Digite 1 para ver todos os pedidos abertos\n \n"
             "Digite 2 para cadastrar um clinete novo \n\n"
             "Digite 3 para ver os clientes cadastrados \n\n"
+            "Digite 9 para entrar como cliente \n\n"
             "Digite 0 para sair \n"
         )
-        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 0])
+        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 9, 0])
         print()
         if opcao == 0:
             self.sair()
@@ -51,7 +52,6 @@ class TelaFuncionario:
         e1 = Endereco(cep, rua, numero, complemento)
         c1 = Cliente(nome, cpf, telefone, e1)
         return c1
-
     
     def sair(self):
         exit(0)
