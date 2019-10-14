@@ -24,9 +24,10 @@ class TelaPedido:
             "4: carne \n \n",
             "5: realizar pedido e cadastrar \n \n",
             "6: realizar pedido em um cadastro existente \n\n"
+            "7: Cancelar o pedido atual e voltar para tela inicial \n\n"
             "0: para sair \n"
         )
-        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 4, 5, 6, 0])
+        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 4, 5, 6, 7, 0])
         return opcao
 
     def sair(self):

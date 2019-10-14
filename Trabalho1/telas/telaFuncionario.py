@@ -22,15 +22,25 @@ class TelaFuncionario:
         print(
             "\n ---------------Ola-------------------\n \n"
             "Digite 1 para ver todos os pedidos abertos\n \n"
-            "Digite 2 para cadastrar um clinete novo \n\n"
+            "Digite 2 para cadastrar um cliente novo \n\n"
             "Digite 3 para ver os clientes cadastrados \n\n"
+            "Digite 4 para excluir um pedido \n\n"
+            "Digite 5 para excluir um cliente \n\n"
             "Digite 9 para entrar como cliente \n\n"
             "Digite 0 para sair \n"
         )
-        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 9, 0])
+        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 4, 5, 9, 0])
         print()
         if opcao == 0:
             self.sair()
+        return opcao
+    
+    def mostra_tela_alteracao_pedido(self):
+        print(
+            "\n -------------------------ATENCAO-------------------------------------"
+            "\n Para remocao de um pedido sera necessario o codigo do mesmo.\n"
+        )
+        opcao = self.le_numero_inteiro("Digite o codigo do pedido: " )
         return opcao
 
     def mostra_tela_cadastro_cliente(self):
@@ -53,5 +63,14 @@ class TelaFuncionario:
         c1 = Cliente(nome, cpf, telefone, e1)
         return c1
     
+    def mostra_tela_exclusao_cliente(self):
+        print(
+            "\n---------------ATENCAO----------\n\n"
+            "Para excluir um cliente sera necessario \n"
+            "Seu codigo de matricula ou cpf \n"
+        )
+        opcao = self.le_numero_inteiro("Digite a matricula do cliente: \n")
+        return opcao
+
     def sair(self):
         exit(0)
