@@ -4,6 +4,7 @@ from entidades.cliente import Cliente
 class ControladorCliente():
     def __init__(self, controlador_principal):
         self.__clientes = []
+        self.__clientes_excluido = []
         self.__cliente_atual = None
         self.__controlador_principal = controlador_principal
         self.__tela_cliente = TelaCliente(self)
@@ -65,6 +66,9 @@ class ControladorCliente():
     def exclui_cliente(self):
         cpf = int(self.__tela_cliente.mostra_tela_exclusao_cliente())
         try:
+            for cliente in self.__clientes:
+                if cliente.cpf == cpf:
+                    self.__clientes_excluido.append(cliente)
             self.__clientes = list(filter(lambda i: i.cpf != cpf, self.__clientes))
             print("\n Cliente excluido com sucesso.\n")
         except Exception:
@@ -95,5 +99,11 @@ class ControladorCliente():
                 self.__cliente_atual = cliente
                 return cliente
         return False
+    
+    def ve_clientes_excluidos(self):
+        if self.__clientes_excluido:
+            for cliente in self.__clientes_excluido:
+                print(cliente)
+    
     def sai(self):
         exit(0)

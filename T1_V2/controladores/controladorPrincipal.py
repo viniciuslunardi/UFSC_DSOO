@@ -84,13 +84,16 @@ class ControladorPrincipal:
 
     def exclui_pedido(self, codigo):
         for pedido in self.__pedidos:
-            if pedido['codigo'] == codigo:
-                self.__pedidos_excluidos = list(filter(lambda i: i['codigo'] == codigo, self.__pedidos))
-                self.__pedidos = list(filter(lambda i: i['codigo'] != codigo, self.__pedidos))
+            if pedido['CODIGO'] == codigo:
+                self.__pedidos_excluidos = list(filter(lambda i: i['CODIGO'] == codigo, self.__pedidos))
+                self.__pedidos = list(filter(lambda i: i['CODIGO'] != codigo, self.__pedidos))
                 print("Exclusao feita com sucesso")    
 
     def exclui_cliente(self):
         self.__controlador_cliente.exclui_cliente()
+
+    def ve_clientes_excluidos(self):
+        self.__controlador_cliente.ve_clientes_excluidos()
 
     def altera_status_pedido(self, codigo):
         for pedido in self.__pedidos:

@@ -16,6 +16,7 @@ class ControladorFuncionario:
             5: self.__controlador_principal.exclui_cliente,
             6: self.__controlador_principal.ve_pedidos_excluidos,
             7: self.altera_status_pedido,
+            8: self.__controlador_principal.ve_clientes_excluidos,
             9: self.__controlador_principal.login
         }
         while True:

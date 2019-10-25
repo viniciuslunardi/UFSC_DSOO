@@ -28,10 +28,11 @@ class TelaFuncionario:
             "Digite 5 para excluir um cliente \n\n"
             "Digite 6 para ver os pedidos excluidos \n\n"
             "Digite 7 para atualizar o status de um pedido aberto \n\n"
+            "Digite 8 para ver clientes que foram excluidos \n\n"
             "Digite 9 para voltar a tela inicial \n\n"
             "Digite 0 para sair \n"
         )
-        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 4, 5, 6, 7, 9, 0])
+        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
         print()
         if opcao == 0:
             self.sair()
@@ -80,8 +81,8 @@ class TelaFuncionario:
     def mostra_tela_exclusao_cliente(self):
         print(
             "\n---------------ATENCAO----------\n\n"
-            "Para excluir um cliente sera necessario \n"
-            "Seu codigo de matricula ou cpf \n"
+            "Para excluir um cliente sera necessario "
+            "seu cpf \n"
         )
         opcao = self.le_numero_inteiro("Digite a matricula do cliente: ")
         return (opcao)
