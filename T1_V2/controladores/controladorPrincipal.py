@@ -34,14 +34,20 @@ class ControladorPrincipal:
     def cria_pedido(self, cliente):
         pedido = self.__controlador_pedidos.cria_pedido()
         pedido_completo = {}
-        keys = ['cliente', 'pedido', 'status', 'codigo']
-        values = ["nome: "+ cliente.nome + " cpf: " + str(cliente.cpf) + " endereco: "+ str(cliente.endereco), 
+        keys = ['CLIENTE NOME', 'CPF', 'ENDERECO', 'PEDIDO', 'STATUS', 'CODIGO']
+        values = [cliente.nome, cliente.cpf, cliente.endereco, 
         (pedido), "Pedido realizado", len(self.__pedidos)+1]
-        for i in range(4):
+        for i in range(6):
             pedido_completo[keys[i]] = values[i]
         self.__pedidos.append(pedido_completo)
         print("Pedido criado com sucesso.")
         self.__controlador_cliente.entrou_cliente()
+
+    def ve_pedido_cliente(self, cliente):
+        if self.__pedidos:
+            for i in self.__pedidos:
+                if i['CPF'] == cliente.cpf:
+                    print(i)
 
     def ve_pedidos(self):
         if self.__pedidos:
@@ -51,6 +57,16 @@ class ControladorPrincipal:
             print(
                 "---------ATENCAO-----------\n"
                 "Nao existem pedidos abertos\n"
+            )
+
+    def ve_pedidos_excluidos(self):
+        if self.__pedidos_excluidos:
+            for i in self.__pedidos_excluidos:
+                print(i)
+        else:
+            print(
+                "---------ATENCAO-----------\n"
+                "Nao existem pedidos excluidos\n"
             )
 
     def ve_clientes(self):
@@ -65,6 +81,22 @@ class ControladorPrincipal:
     def cadastro(self):
         self.__controlador_cliente.inclui_cliente()
         self.login()
+
+    def exclui_pedido(self, codigo):
+        for pedido in self.__pedidos:
+            if pedido['codigo'] == codigo:
+                self.__pedidos_excluidos = list(filter(lambda i: i['codigo'] == codigo, self.__pedidos))
+                self.__pedidos = list(filter(lambda i: i['codigo'] != codigo, self.__pedidos))
+                print("Exclusao feita com sucesso")    
+
+    def exclui_cliente(self):
+        self.__controlador_cliente.exclui_cliente()
+
+    def altera_status_pedido(self, codigo):
+        for pedido in self.__pedidos:
+            if pedido['CODIGO'] == codigo:
+                pedido['STATUS'] = self.__controlador_funcionario.novo_status()
+                print("Pedido atualizado com sucesso.")
 
     def exit(self):
         exit(0)

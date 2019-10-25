@@ -27,16 +27,29 @@ class TelaFuncionario:
             "Digite 4 para excluir um pedido \n\n"
             "Digite 5 para excluir um cliente \n\n"
             "Digite 6 para ver os pedidos excluidos \n\n"
+            "Digite 7 para atualizar o status de um pedido aberto \n\n"
             "Digite 9 para voltar a tela inicial \n\n"
             "Digite 0 para sair \n"
         )
-        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 4, 5, 6, 9, 0])
+        opcao = self.le_numero_inteiro("Escolha a opcao: ", [1, 2, 3, 4, 5, 6, 7, 9, 0])
         print()
         if opcao == 0:
             self.sair()
         return opcao
     
     def mostra_tela_alteracao_pedido(self):
+        print(
+            "\n -------------------------ATENCAO-------------------------------------"
+            "\n Para alterar o status de um pedido sera necessario o codigo do mesmo.\n"
+        )
+        opcao = self.le_numero_inteiro("Digite o codigo do pedido: ")
+        return opcao
+
+    def novo_status(self):
+        print("\n\nAs opcoes sao Pedido Aceito, Pedido a Caminho e Pedido Entregue.\n")
+        return str(input("Digite o novo status: "))
+
+    def mostra_tela_exclusao_pedido(self):
         print(
             "\n -------------------------ATENCAO-------------------------------------"
             "\n Para remocao de um pedido sera necessario o codigo do mesmo.\n"

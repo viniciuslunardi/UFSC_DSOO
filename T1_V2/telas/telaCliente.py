@@ -71,9 +71,6 @@ class TelaCliente:
             "\n------------------ATENCAO-----------------\n\n"
             "Para alterar o nome do cliente digite: 1 \n\n"
             "Para alterar o cpf do cliente digite: 2 \n\n"
-            "Para alterar o telefone do cliente digite: 3 \n\n"
-            "Para alterar o endereco do cliente digite: 4 \n\n"
-            "Para alterar a pontuacao fidelidade do cliente digite: 5\n\n"
             "Para sair digite: 0\n"
         )
         opcao = self.le_numero_inteiro("Escolha o atributo que deseja alterar: ", [1,2,3,4,5,0])

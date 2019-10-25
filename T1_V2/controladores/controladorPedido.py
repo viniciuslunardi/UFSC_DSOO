@@ -32,7 +32,7 @@ class ControladorPedido:
                 print(i)
         else: 
             return "\nAtencao, nao existem pedidos abertos.\n" 
-    
+
     def exit(self):
         exit(0)
     

@@ -12,14 +12,14 @@ class ControladorCliente():
         switcher = {
             0: self.sai,
             1: self.__controlador_principal.cria_pedido,
-            2: self.__controlador_principal.ve_pedidos,
+            2: self.__controlador_principal.ve_pedido_cliente,
             3: self.altera_cliente,
             9: self.__controlador_principal.login
         }
         while True: 
             opcao = self.__tela_cliente.mostra_tela_cliente()
             funcao_escolhida = switcher[opcao]
-            if opcao == int(1):
+            if opcao == int(1) or opcao == int(2):
                 funcao_escolhida(self.__cliente_atual)
             else:
                 funcao_escolhida()
@@ -63,7 +63,7 @@ class ControladorCliente():
             print("Nao eh possivel cadastrar clientes com o mesmo cpf.\n")
 
     def exclui_cliente(self):
-        cpf = self.__tela_cliente.mostra_tela_exclusao_cliente()
+        cpf = int(self.__tela_cliente.mostra_tela_exclusao_cliente())
         try:
             self.__clientes = list(filter(lambda i: i.cpf != cpf, self.__clientes))
             print("\n Cliente excluido com sucesso.\n")
