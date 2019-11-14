@@ -7,9 +7,24 @@ class Cliente(Pessoa):
         self.__cpf = cpf
         self.__telefone = telefone
         self.__endereco = endereco
+        self.__rua = endereco.rua
+        self.__numero = endereco.numero
+        self.__complemento = endereco.complemento
         self.__fidelidade = fidelidade
         self.__senha = senha
     
+    @property
+    def rua(self):
+        return self.__rua
+    
+    @property
+    def numero(self):
+        return self.__numero
+
+    @property
+    def complemento(self):
+        return self.__complemento
+
     @property
     def endereco(self):
         return self.__endereco.rua, self.__endereco.numero, self.__endereco.complemento

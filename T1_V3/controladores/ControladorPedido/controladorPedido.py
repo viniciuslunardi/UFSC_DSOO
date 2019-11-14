@@ -10,8 +10,20 @@ class ControladorPedido:
         self.__pedidos_abertos = []
         self.__pedidos_fechados = []
         self.__controlador_principal = controlador_principal
+        self.carrega_pedido()
         self.__main_view = TelaPedido()
 
+    def carrega_pedido(self):
+        rows = pedido_db.fetch()
+        for pedido in rows:
+            pedido_completo = {}
+            keys = ['NOME', 'CPF', 'TELEFONE', 'RUA', 'NUMERO', 'COMPLEMENTO', 'PEDIDO', 'DATA', 'STATUS', 'CODIGO']
+            values = [pedido[1], pedido[2], pedido[3], pedido[4], pedido[5], 
+            pedido[6], pedido[7], pedido[8], pedido[9], pedido[0]]
+            for i in range(10):
+                pedido_completo[keys[i]] = values[i]
+            self.__pedidos.append(pedido_completo)
+    
     def cria_pedido(self, cliente):
         p1 = Pedido()
         self.monta_prato(p1, cliente)
@@ -26,18 +38,34 @@ class ControladorPedido:
             pedido.macarrao()
         if botoes == 'Adicionar carne':
             pedido.carne()
-        if botoes == 'Finalizar Pedido':
+        if botoes == 'Finalizar pedido':
+            for dado in dados:
+                if dado == 'Adicionar feijao':
+                    pedido.feijao()
+                if dado == 'Adicionar arroz':
+                    pedido.arroz()
+                if dado == 'Adicionar macarrao':
+                    pedido.macarrao()
+                if dado == 'Adicionar carne':
+                    pedido.carne()
             self.finaliza(pedido, cliente)
-    
-    
+       
     def finaliza(self, pedido, cliente):
         pedido_completo = {}
-        keys = ['CLIENTE NOME', 'CPF', 'ENDERECO', 'PEDIDO', 'STATUS', 'CODIGO', 'DATA']
-        values = [cliente.nome, cliente.cpf, cliente.endereco, 
-        pedido.pedido, "Pedido realizado", len(self.__pedidos)+1, datetime.today()]
-        for i in range(7):
+        keys = ['NOME', 'CPF', 'TELEFONE', 'RUA', 'NUMERO', 'COMPLEMENTO',
+         'PEDIDO', 'STATUS', 'DATA', 'CODIGO']
+        values = [cliente.nome, cliente.cpf, cliente.telefone, cliente.rua, cliente.numero, 
+        cliente.complemento, pedido.pedido, "Pedido realizado", datetime.today(), 
+        len(self.__pedidos)+1]
+        for i in range(10):
             pedido_completo[keys[i]] = values[i]
         self.__pedidos.append(pedido_completo)
+        pedido_db.insert(
+            pedido_completo['CODIGO'], pedido_completo['NOME'], pedido_completo['CPF'],
+            pedido_completo['TELEFONE'], cliente.rua, cliente.numero, 
+            cliente.complemento, str(pedido_completo['PEDIDO']), 
+            str(pedido_completo['DATA']), pedido_completo['STATUS']
+            )
         self.__main_view.show_msg('SUCESSO', 'Pedido adicionado com sucesso')
 
     def ve_pedidos(self):
@@ -51,10 +79,11 @@ class ControladorPedido:
 
     def ve_pedido_cliente(self, cliente):
         if self.__pedidos:
+            lista = []
             for i in self.__pedidos:
                 if i['CPF'] == cliente.cpf:
-                    self.__main_view.show_msg('Pedidos', i)
-            self.__main_view.show_msg('ERROR', 'Voce nao possui pedidos.')
+                    lista.append(i)
+            self.__main_view.show_msg('Pedidos', lista)
 
     def ve_pedidos_fechados(self):
         if self.__pedidos_fechados:
@@ -67,14 +96,17 @@ class ControladorPedido:
         for pedido in self.__pedidos:
             if pedido['CODIGO'] == codigo:
                 self.__pedidos_excluidos = list(filter(lambda i: i['CODIGO'] == codigo, self.__pedidos))
+                pedido_db.remove(pedido['CODIGO'])
                 self.__pedidos = list(filter(lambda i: i['CODIGO'] != codigo, self.__pedidos))
                 self.__main_view.show_msg('SUCESSO', 'Exclusao feita com sucesso')
         self.__main_view.show_msg('ERROR', 'Nao foi possivel localizar o pedido')  
 
     def altera_status_pedido(self, codigo, status):
         for pedido in self.__pedidos:
-            if pedido['CODIGO'] == codigo:
+            if pedido['CODIGO'] == int(codigo):
                 pedido['STATUS'] = status
+                pedido_db.update(pedido['CODIGO'], pedido['NOME'], pedido['CPF'], pedido['TELEFONE'],
+                 pedido['RUA'], pedido['NUMERO'], pedido['COMPLEMENTO'], pedido['PEDIDO'], pedido['STATUS'], pedido['DATA'])
                 self.__main_view.show_msg('Pedidos', 'Pedido atualizado com sucesso') 
         self.__main_view.show_msg('ERROR', 'Nao foi possivel localizar o pedido') 
 

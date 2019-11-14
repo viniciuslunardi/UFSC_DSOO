@@ -3,12 +3,18 @@ from controladores.ControladorPedido.controladorPedido import ControladorPedido
 from controladores.ControladorFuncionario.controladorFuncionario import ControladorFuncionario
 from telas.telaPrincipal import TelaPrincipal
 class ControladorPrincipal:
+    __instance = None
     def __init__(self):
         self.__main_view = TelaPrincipal()
         self.__controlador_cliente = ControladorCliente(self)
         self.__controlador_funcionario = ControladorFuncionario(self)
         self.__controlador_pedidos = ControladorPedido(self)
     
+    def new(self):
+        if ControladorPrincipal.__instance == None:
+            ControladorPrincipal.__instance = object.__new__(self)
+        return ControladorPrincipal.__instance
+
     def entra_cliente(self):
         self.__controlador_cliente.autenticar()
 

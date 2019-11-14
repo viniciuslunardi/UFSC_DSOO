@@ -16,17 +16,22 @@ class TelaPedido:
         self.__window = sg.Window('Larikas', default_element_size=(50,20)).Layout(layout)
 
         layout_pedido = [
-            [sg.Multiline(autoscroll=True)]
+            [sg.Multiline(autoscroll=True, )]
         ]
 
     def open(self):
+        teste = []
         while True:
             eventos, dados = self.__window.Read()
             if eventos != 'Finalizar pedido':
                 self.show_msg('Obrigado!', 'Produto adicionado com sucesso.')
+                teste.append(eventos)
             else: break
         self.__window.Close()
-        return eventos, dados
+        return eventos, teste
 
     def show_msg(self, title: str, msg: str):
         sg.Popup(title, msg)
+
+    def show_pedido(self):
+        pass
